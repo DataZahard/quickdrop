@@ -9,7 +9,7 @@ set -u
 # than the default.
 # ============================================================
 
-PROGRAM_DIRECTORY="${QD_PROGRAM_DIRECTORY:-$HOME/projects/free/quickdrop}"
+PROGRAM_DIRECTORY="${QD_PROGRAM_DIRECTORY:-$HOME/quickdrop}"
 
 PYTHON_PROGRAM="$PROGRAM_DIRECTORY/quickdrop.py"
 
