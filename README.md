@@ -271,7 +271,7 @@ The repository can be located **anywhere**.
 For example:
 
 ```text
-~/projects/free/quickdrop/
+~/projects/quickdrop/
 ```
 
 or:
