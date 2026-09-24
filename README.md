@@ -95,19 +95,22 @@ export QD_BASHRC_PATH="$HOME/.bashrc"
 
 ### Launcher path
 
-The installer creates the `qd` launcher **inside the configured QuickDrop program directory**. For example, if:
+The `qd` launcher is created **inside the QuickDrop program directory**.
+
+For example:
 
 ```bash
 export QD_PROGRAM_DIRECTORY="$HOME/projects/free/quickdrop"
 ```
 
-then the launcher is created at:
+The launcher will then be:
 
 ```text
 $HOME/projects/free/quickdrop/qd
 ```
 
-The installer adds that program directory to your `PATH`, so `qd` can be run directly.
+The installer adds the configured program directory to your `PATH`, so you can run `qd` from any directory.
+
 
 ### Run the installer
 
@@ -122,7 +125,7 @@ The installer will:
 2. Create the local data directory.
 3. Initialize the SQLite database.
 4. Set up the `qd` command at the launcher's configured location.
-5. Add the configured launcher directory to your `PATH`.
+5. Add the configured program directory to your `PATH`.
 6. Configure automatic recent-note display for interactive Termux sessions.
 7. Preserve existing `.bashrc` configuration instead of replacing it.
 
