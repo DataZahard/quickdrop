@@ -17,7 +17,7 @@ BACKUP_DIRECTORY="${QD_BACKUP_DIRECTORY:-$NOTES_DIRECTORY/backups}"
 BASHRC_PATH="${QD_BASHRC_PATH:-$HOME/.bashrc}"
 
 # The qd launcher requested by this setup.
-QD_LAUNCHER="$HOME/projects/free/qd"
+QD_LAUNCHER="$PROGRAM_DIRECTORY/qd"
 
 
 echo "================================"
@@ -111,7 +111,7 @@ python3 "$PROGRAM_DIRECTORY/quickdrop.py" path >/dev/null
 # runs don't add duplicate entries.
 # ------------------------------------------------------------
 
-PATH_LINE='export PATH="$HOME/projects/free:$PATH"'
+PATH_LINE='export PATH="$PROGRAM_DIRECTORY:$PATH"'
 
 if [ ! -f "$BASHRC_PATH" ]; then
     echo "Creating $BASHRC_PATH"
