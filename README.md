@@ -65,13 +65,43 @@ For example:
 
 ```bash
 cd ~/projects/free
-git clone https://github.com/YOUR_USERNAME/quickdrop.git
+git clone https://github.com/DataZahard/quickdrop.git
 cd quickdrop
 ```
 
-Or you can download/extract the repository somewhere else.
+You can also clone or extract the repository somewhere else. Just make sure `QD_PROGRAM_DIRECTORY` points to that directory before running the installer.
 
-The installer detects the repository's location automatically.
+### Configure installation paths
+
+QuickDrop lets you choose where its program files, notes, backups, and Bash configuration live. Set these variables before running the installer:
+
+```bash
+export QD_PROGRAM_DIRECTORY="$PWD"
+export QD_NOTES_DIRECTORY="$HOME/.quickdrop"
+export QD_BACKUP_DIRECTORY="$HOME/.quickdrop/backups"
+export QD_BASHRC_PATH="$HOME/.bashrc"
+```
+
+For example, if your repository is at `~/Downloads/quickdrop`:
+
+```bash
+cd ~/Downloads/quickdrop
+export QD_PROGRAM_DIRECTORY="$PWD"
+export QD_NOTES_DIRECTORY="$HOME/.quickdrop"
+export QD_BACKUP_DIRECTORY="$HOME/.quickdrop/backups"
+export QD_BASHRC_PATH="$HOME/.bashrc"
+./install.sh
+```
+
+### Launcher path
+
+The installer currently creates the `qd` launcher at:
+
+```text
+~/projects/free/qd
+```
+
+If you want a different launcher location, edit `QD_LAUNCHER` near the top of `install.sh` before running it. The installer also adds `~/projects/free` to your `PATH`; if you changed `QD_LAUNCHER`, update `PATH_LINE` in `install.sh` to match its directory.
 
 ### Run the installer
 
@@ -82,11 +112,11 @@ chmod +x install.sh
 
 The installer will:
 
-1. Detect the QuickDrop program directory.
+1. Use the program directory you set with `QD_PROGRAM_DIRECTORY` (or the installer's default if you do not set it).
 2. Create the local data directory.
 3. Initialize the SQLite database.
-4. Set up the `qd` command.
-5. Add the appropriate directory to your `PATH`.
+4. Set up the `qd` command at the launcher's configured location.
+5. Add the configured launcher directory to your `PATH`.
 6. Configure automatic recent-note display for interactive Termux sessions.
 7. Preserve existing `.bashrc` configuration instead of replacing it.
 
@@ -266,7 +296,7 @@ qd help
 
 QuickDrop keeps **application files and user data separate**.
 
-The repository can be located **anywhere**.
+The repository can be cloned anywhere, but the installer **does not automatically detect the clone location**. Before running the installer, set `QD_PROGRAM_DIRECTORY` to the directory containing `quickdrop.py`.
 
 For example:
 
@@ -286,7 +316,7 @@ or:
 ~/my-tools/quickdrop/
 ```
 
-The installer does not require a particular clone location.
+The installer does not require a particular clone location, but you must set `QD_PROGRAM_DIRECTORY` to the clone/extracted directory.
 
 ### User data
 
@@ -340,10 +370,11 @@ quickdrop/
 ├── quickdrop.py
 ├── qd
 ├── install.sh
-└── README.md
+├── README.md
+└── LICENSE
 ```
 
-The user's data is **not stored inside the repository**:
+The user's data is **not stored inside the repository**. The `LICENSE` file is part of the repository; the database and backups are not.
 
 ```text
 ~/.quickdrop/
@@ -355,7 +386,7 @@ The user's data is **not stored inside the repository**:
 
 # 🔄 Updating QuickDrop
 
-If you installed QuickDrop from Git:
+If you installed QuickDrop from Git, pull updates from the directory where you cloned the repository:
 
 ```bash
 cd /path/to/quickdrop
