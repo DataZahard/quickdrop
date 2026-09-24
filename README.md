@@ -100,13 +100,13 @@ The `qd` launcher is created **inside the QuickDrop program directory**.
 For example:
 
 ```bash
-export QD_PROGRAM_DIRECTORY="$HOME/projects/free/quickdrop"
+export QD_PROGRAM_DIRECTORY="$HOME/projects/quickdrop"
 ```
 
 The launcher will then be:
 
 ```text
-$HOME/projects/free/quickdrop/qd
+$HOME/projects/quickdrop/qd
 ```
 
 The installer adds the configured program directory to your `PATH`, so you can run `qd` from any directory.
