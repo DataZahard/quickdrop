@@ -95,13 +95,19 @@ export QD_BASHRC_PATH="$HOME/.bashrc"
 
 ### Launcher path
 
-The installer currently creates the `qd` launcher at:
+The installer creates the `qd` launcher **inside the configured QuickDrop program directory**. For example, if:
 
-```text
-~/projects/free/qd
+```bash
+export QD_PROGRAM_DIRECTORY="$HOME/projects/free/quickdrop"
 ```
 
-If you want a different launcher location, edit `QD_LAUNCHER` near the top of `install.sh` before running it. The installer also adds `~/projects/free` to your `PATH`; if you changed `QD_LAUNCHER`, update `PATH_LINE` in `install.sh` to match its directory.
+then the launcher is created at:
+
+```text
+$HOME/projects/free/quickdrop/qd
+```
+
+The installer adds that program directory to your `PATH`, so `qd` can be run directly.
 
 ### Run the installer
 
@@ -112,7 +118,7 @@ chmod +x install.sh
 
 The installer will:
 
-1. Use the program directory you set with `QD_PROGRAM_DIRECTORY` (or the installer's default if you do not set it).
+1. Use the program directory you set with `QD_PROGRAM_DIRECTORY` (or `$HOME/quickdrop` if you do not set it).
 2. Create the local data directory.
 3. Initialize the SQLite database.
 4. Set up the `qd` command at the launcher's configured location.
