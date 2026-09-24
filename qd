@@ -1,0 +1,22 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+set -u
+
+# ============================================================
+# QuickDrop program location
+#
+# Change this only if you want the program somewhere other
+# than the default.
+# ============================================================
+
+PROGRAM_DIRECTORY="${QD_PROGRAM_DIRECTORY:-$HOME/projects/free/quickdrop}"
+
+PYTHON_PROGRAM="$PROGRAM_DIRECTORY/quickdrop.py"
+
+if [ ! -f "$PYTHON_PROGRAM" ]; then
+    printf 'QuickDrop error: program not found:\n%s\n' "$PYTHON_PROGRAM" >&2
+    printf 'Set QD_PROGRAM_DIRECTORY or reinstall QuickDrop.\n' >&2
+    exit 1
+fi
+
+exec python3 "$PYTHON_PROGRAM" "$@"
